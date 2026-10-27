@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "author": "Ahmed Abbas",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "chip-mcp2515", "id": "chip1", "top": -315.78, "left": 206.4, "attrs": {} },
+    { "type": "chip-mcp2515", "id": "chip2", "top": -123.78, "left": 235.2, "attrs": {} },
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp1",
+      "top": -385.66,
+      "left": -73.1,
+      "rotate": 90,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -406.6,
+      "left": 201.6,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -234,
+      "left": -236.2,
+      "attrs": { "color": "red" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": -139.2,
+      "left": -240.55,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "esp1:5V", "chip1:VCC", "red", [ "v-28.65", "h297.6", "v96" ] ],
+    [ "esp1:GND.3", "chip1:GND", "black", [ "v67.2", "h192", "v-86.4" ] ],
+    [ "esp1:5", "chip1:CS", "green", [ "v48", "h201.6", "v-86.4" ] ],
+    [ "esp1:18", "chip1:SCK", "purple", [ "v19.2", "h163.2", "v-86.4" ] ],
+    [ "esp1:23", "chip1:MOSI", "limegreen", [ "v28.8", "h105.6", "v-86.4" ] ],
+    [ "esp1:19", "chip1:MISO", "yellow", [ "v38.4", "h172.8", "v-86.4" ] ],
+    [ "chip1:CAN_L", "chip2:CAN_L", "blue", [ "h59.41", "v192" ] ],
+    [ "chip1:CAN_H", "chip2:CAN_H", "violet", [ "h69.01", "v192" ] ],
+    [ "btn1:1.a", "esp1:14", "blue", [] ],
+    [ "btn1:2.a", "esp1:GND.2", "black", [] ],
+    [ "esp1:21", "chip1:INT", "orange", [ "v9.6", "h124.8", "v-86.4" ] ],
+    [ "esp1:GND.2", "btn1:2.l", "black", [ "h67.2", "v-144.2" ] ],
+    [ "esp1:5V", "chip2:VCC", "red", [ "h-28.8", "v259.35" ] ],
+    [ "esp1:GND.3", "chip2:GND", "black", [ "v0" ] ],
+    [ "esp1:15", "chip2:CS", "green", [ "v0" ] ],
+    [ "esp1:18", "chip2:SCK", "purple", [ "v0" ] ],
+    [ "esp1:23", "chip2:MOSI", "limegreen", [ "v0" ] ],
+    [ "esp1:19", "chip2:MISO", "yellow", [ "v0" ] ],
+    [ "esp1:22", "chip2:INT", "orange", [ "v0" ] ],
+    [ "r2:2", "esp1:16", "magenta", [ "h0" ] ],
+    [ "led1:C", "esp1:GND.3", "black", [ "v144", "h221.2" ] ],
+    [ "led1:A", "r2:1", "magenta", [ "v38.4" ] ],
+    [ "btn1:1.l", "esp1:14", "magenta", [ "h0" ] ],
+    [ "esp1:TX", "$serialMonitor:RX", "", [] ], [ "esp:RX", "$serialMonitor:TX", "", [] ]
+  ],
+  "dependencies": {}
+}

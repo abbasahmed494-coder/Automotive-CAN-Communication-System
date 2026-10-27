@@ -1,0 +1,4 @@
+{
+  "name": "mcp2515",
+  "pins": [ "INT", "SCK", "MOSI", "MISO", "CS", "VCC", "GND","", "", "", "", "CAN_L", "CAN_H" ]
+}
